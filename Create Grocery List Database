@@ -1,0 +1,33 @@
+--Create a grocery store database
+
+CREATE TABLE store (id INTEGER PRIMARY KEY, item TEXT, category TEXT, price INTEGER, aisle INTEGER);
+
+INSERT INTO store VALUES(1, "Chocolate", "Dessert", 2.99, 10);
+INSERT INTO store VALUES(2, "Broccoli", "Produce", 1.50, 2);
+INSERT INTO store VALUES(3, "Carrots", "Produce", 1.99, 2);
+INSERT INTO store VALUES(4, "Crackers", "Snacks", 3.50, 5);
+INSERT INTO store VALUES(5, "Potatoes", "Produce", 4.99, 2);
+INSERT INTO store VALUES(6, "Frozen Mango", "Frozen", 7.99, 8);
+INSERT INTO store VALUES(7, "Frozen Pizza", "Frozen", 5.50, 8);
+INSERT INTO store VALUES(8, "Quinoa", "Bulk", 5.25, 3);
+INSERT INTO store VALUES(9, "Ice Cream", "Frozen", 4.99, 8);
+INSERT INTO store VALUES(10, "Chicken", "Meat", 10.99, 12);
+INSERT INTO store VALUES(11, "Strawberries", "Produce", 4.50, 2);
+INSERT INTO store VALUES(12, "Hot Sauce", "Condiments", 5.99, 4);
+INSERT INTO store VALUES(13, "Rice", "Bulk", 3.99, 3);
+INSERT INTO store VALUES(14, "Coffee", "Bulk", 8.99, 8);
+INSERT INTO store VALUES(15, "Creamer", "Dairy", 4.25, 7);
+
+--Display database by price, descending
+SELECT * FROM store
+ORDER BY price desc;
+
+--what is the sum of item prices
+SELECT sum(price)
+FROM store;
+
+--what is the average price of items in the produce section
+SELECT avg(price)
+FROM store
+WHERE category='Produce';
+
