@@ -1,0 +1,62 @@
+--In this example, I downloaded a .csv spreadsheet with information on Spotify's Top 50 songs from Kaggle.
+--Then I created a table to import the data into.
+--Next I analyzed the data by running different SQL queries.
+
+#Creating the table: 
+CREATE TABLE BIT_DB.SpotifyData (
+id integer PRIMARY KEY,
+artist_name varchar NOT NULL,
+track_name varchar NOT NULL,
+track_id varchar NOT NULL,
+popularity integer NOT NULL,
+danceability decimal(4,3) NOT NULL,
+energy decimal(4,3) NOT NULL,
+key integer NOT NULL,
+loudness decimal(5,3) NOT NULL,
+mode integer NOT NULL,
+speechiness decimal(5,4) NOT NULL,
+acousticness decimal(6,5) NOT NULL,
+instrumentalness text NOT NULL,
+liveness decimal(5,4) NOT NULL,
+valence decimal(4,3) NOT NULL,
+tempo decimal(6,3) NOT NULL,
+duration_ms integer NOT NULL,
+time_signature integer NOT NULL 
+)
+
+
+--Display how many songs each artist had in the Top 50.
+
+SELECT artist_name, COUNT(*) as Total
+FROM BIT_DB.SpotifyData
+GROUP BY artist_name
+ORDER BY total desc;
+
+--Show the top 10 artists by popularity
+
+SELECT artist_name, popularity
+FROM BIT_DB.SpotifyData
+ORDER BY popularity desc
+LIMIT 10;
+
+--What is the average danceability of Doja Cat's songs?
+
+SELECT artist_name, AVG(danceability)
+FROM BIT_DB.SpotifyData
+WHERE artist_name='Doja Cat';
+
+--Display the artists whose songs have speechiness >0.05
+
+SELECT artist_name, speechiness
+FROM BIT_DB.SpotifyData
+GROUP BY artist_name
+HAVING speechiness>0.05
+ORDER BY speechiness desc;
+
+--What is the longest song in the Top 50 list?
+
+SELECT artist_name, track_name, duration_ms
+FROM BIT_DB.SpotifyData
+ORDER BY duration_ms desc
+LIMIT 1;
+
